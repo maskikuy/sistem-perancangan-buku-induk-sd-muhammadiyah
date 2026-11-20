@@ -164,7 +164,8 @@
                             TA Aktif: 2026/2027 (Ganjil)
                         </div>
 
-                        <span class="text-xs text-gray-500 font-mono">{{ date('d M Y') }}</span>
+                        <!-- Real-time Clock & Date -->
+                        <x-realtime-clock variant="badge" />
                     </div>
                 </div>
             </header>

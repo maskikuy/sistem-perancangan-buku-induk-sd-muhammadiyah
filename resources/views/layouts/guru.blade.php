@@ -123,7 +123,7 @@
                     </div>
 
                     <div class="flex items-center space-x-3">
-                        <span class="text-xs text-gray-500 font-mono">{{ date('d M Y') }}</span>
+                        <x-realtime-clock variant="badge" />
                     </div>
                 </div>
             </header>

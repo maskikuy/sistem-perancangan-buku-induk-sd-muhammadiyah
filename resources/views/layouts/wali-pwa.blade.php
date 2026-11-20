@@ -99,7 +99,12 @@
     </header>
 
     <!-- Main Container -->
-    <main class="max-w-lg mx-auto px-4 py-4">
+    <main class="max-w-lg mx-auto px-4 py-3">
+        <!-- Live Date & Realtime Clock Indicator -->
+        <div class="flex items-center justify-between mb-3 px-1 text-xs">
+            <span class="font-bold text-gray-700 text-xs sm:text-sm">{{ $header ?? 'Beranda Wali' }}</span>
+            <x-realtime-clock variant="minimal" />
+        </div>
         <!-- Flash Alert -->
         @if(session('success'))
             <div class="p-3 mb-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs rounded-xl shadow-sm flex items-center">

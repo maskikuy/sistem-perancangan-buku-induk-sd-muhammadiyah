@@ -102,7 +102,6 @@ class Siswa extends Model
     {
         return $this->hasMany(Nilai::class, 'siswa_id');
     }
-
     /**
      * Seluruh pengajuan izin dan penjemputan terkait siswa ini
      */
@@ -117,5 +116,13 @@ class Siswa extends Model
     public function penjemputAlternatif()
     {
         return $this->hasMany(PenjemputAlternatif::class, 'siswa_id');
+    }
+
+    /**
+     * Catatan wali kelas dan rekomendasi kenaikan kelas
+     */
+    public function catatanWaliKelas()
+    {
+        return $this->hasMany(CatatanWaliKelas::class, 'siswa_id');
     }
 }

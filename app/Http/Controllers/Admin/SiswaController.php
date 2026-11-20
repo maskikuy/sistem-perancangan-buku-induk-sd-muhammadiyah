@@ -190,9 +190,11 @@ class SiswaController extends Controller
             'riwayatKelas.tahunAjaran',
             'riwayatKelas.semester',
             'mutasi',
-            'presensi' => fn($q) => $q->latest('tanggal')->take(10),
             'nilai.mataPelajaran'
         ])->findOrFail($id);
+
+        // Ambil 10 presensi terakhir tanpa SQL window function agar kompatibel dengan seluruh versi MySQL/MariaDB
+        $siswa->setRelation('presensi', $siswa->presensi()->latest('tanggal')->take(10)->get());
 
         return view('admin.siswa.show', compact('siswa'));
     }

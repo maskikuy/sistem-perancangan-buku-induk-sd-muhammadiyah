@@ -1,0 +1,22 @@
+{
+  "name": "Buku Induk SD Muhammadiyah Sleman",
+  "short_name": "Buku Induk",
+  "description": "Sistem Informasi Buku Induk Terintegrasi SD Muhammadiyah Sleman",
+  "start_url": "/wali/dashboard",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFFFF",
+  "theme_color": "#059669",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
