@@ -24,6 +24,7 @@ class DashboardController extends Controller
         $totalGuru  = Guru::count();
         $totalKelas = Kelas::count();
         $taAktif    = TahunAjaran::where('is_aktif', true)->first();
+        $semAktif   = \App\Models\Semester::where('is_aktif', true)->first();
 
         // Statistik presensi hari ini
         $hariIni = Carbon::today()->toDateString();
@@ -50,6 +51,7 @@ class DashboardController extends Controller
             'totalGuru',
             'totalKelas',
             'taAktif',
+            'semAktif',
             'rekapPresensi',
             'pengajuanMenunggu',
             'auditLogsTerbaru',

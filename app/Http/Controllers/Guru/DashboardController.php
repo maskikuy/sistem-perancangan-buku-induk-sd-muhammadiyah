@@ -59,13 +59,28 @@ class DashboardController extends Controller
             ->latest()
             ->get();
 
+        $taAktif  = \App\Models\TahunAjaran::where('is_aktif', true)->first();
+        $semAktif = \App\Models\Semester::where('is_aktif', true)->first();
+
+        // Mata pelajaran yang diampu oleh guru ini
+        $mapelDiampu = $guru ? \App\Models\MataPelajaran::whereHas('jadwal', function($q) use ($guru) {
+            $q->where('guru_id', $guru->id);
+        })->get() : collect();
+
+        // Total jam mengajar mingguan
+        $totalJadwalMingguan = $guru ? Jadwal::where('guru_id', $guru->id)->count() : 0;
+
         return view('guru.dashboard', compact(
             'guru',
             'kelasWali',
             'totalSiswaWali',
             'rekapPresensiHariIni',
             'jadwalHariIni',
-            'pengajuanMenunggu'
+            'pengajuanMenunggu',
+            'taAktif',
+            'semAktif',
+            'mapelDiampu',
+            'totalJadwalMingguan'
         ));
     }
 }

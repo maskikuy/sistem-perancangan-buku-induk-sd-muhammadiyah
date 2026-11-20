@@ -29,6 +29,7 @@ class PresensiController extends Controller
         $kelasId = $request->input('kelas_id', $kelasWali ? $kelasWali->id : $daftarKelas->first()?->id);
         $tanggal = $request->input('tanggal', Carbon::today()->toDateString());
 
+        $taAktif = \App\Models\TahunAjaran::where('is_aktif', true)->first();
         $semAktif = Semester::where('is_aktif', true)->first();
 
         // Ambil siswa yang aktif di kelas ini
@@ -48,6 +49,7 @@ class PresensiController extends Controller
             'tanggal',
             'daftarSiswa',
             'presensiTercatat',
+            'taAktif',
             'semAktif'
         ));
     }

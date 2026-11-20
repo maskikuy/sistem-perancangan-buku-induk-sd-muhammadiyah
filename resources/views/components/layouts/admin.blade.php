@@ -157,11 +157,15 @@
                         <h2 class="text-base sm:text-lg font-bold text-gray-800">{{ $header ?? 'Panel Administrasi' }}</h2>
                     </div>
 
-                    <div class="flex items-center space-x-3">
+                    <div class="flex items-center space-x-2 sm:space-x-3">
+                        @php
+                            $taAktifAdminNav = \App\Models\TahunAjaran::where('is_aktif', true)->first();
+                            $semAktifAdminNav = \App\Models\Semester::where('is_aktif', true)->first();
+                        @endphp
                         <!-- Indikator Tahun Ajaran Aktif -->
-                        <div class="hidden sm:inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+                        <div class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200 shadow-sm">
                             <span class="w-2 h-2 mr-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                            TA Aktif: 2026/2027 (Ganjil)
+                            TA Aktif: {{ $taAktifAdminNav?->nama ?? '2026/2027' }} ({{ ucfirst($semAktifAdminNav?->semester ?? 'Ganjil') }})
                         </div>
 
                         <!-- Real-time Clock & Date -->

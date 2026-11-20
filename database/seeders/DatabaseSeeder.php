@@ -475,66 +475,65 @@ class DatabaseSeeder extends Seeder
             'status_riwayat'  => 'aktif',
         ]);
 
-        // 10. Jadwal Pelajaran Kelas 1 Abu Bakar
-        Jadwal::create([
-            'kelas_id'          => $kelas1->id,
-            'mata_pelajaran_id' => $mapelPAI->id,
-            'guru_id'           => $guru3->id,
-            'semester_id'       => $semGanjil->id,
-            'hari'              => 'senin',
-            'jam_mulai'         => '07:30:00',
-            'jam_selesai'       => '09:00:00',
-        ]);
+        // 10. Jadwal Pelajaran Realistis SD Muhammadiyah (Senin s/d Sabtu)
+        $jadwalList = [
+            // === GURU 1: Ahmad Dahlan, S.Pd. (Wali Kelas 1) ===
+            // Senin
+            ['kelas_id' => $kelas1->id, 'mapel_id' => $mapelKMD->id,  'guru_id' => $guru1->id, 'hari' => 'senin',  'mulai' => '08:30:00', 'selesai' => '10:00:00'],
+            ['kelas_id' => $kelas1->id, 'mapel_id' => $mapelBIN->id,  'guru_id' => $guru1->id, 'hari' => 'senin',  'mulai' => '10:15:00', 'selesai' => '11:45:00'],
+            // Selasa
+            ['kelas_id' => $kelas1->id, 'mapel_id' => $mapelMTK->id,  'guru_id' => $guru1->id, 'hari' => 'selasa', 'mulai' => '07:30:00', 'selesai' => '09:00:00'],
+            ['kelas_id' => $kelas1->id, 'mapel_id' => $mapelBIN->id,  'guru_id' => $guru1->id, 'hari' => 'selasa', 'mulai' => '09:15:00', 'selesai' => '10:45:00'],
+            // Rabu
+            ['kelas_id' => $kelas1->id, 'mapel_id' => $mapelIPAS->id, 'guru_id' => $guru1->id, 'hari' => 'rabu',   'mulai' => '07:30:00', 'selesai' => '09:00:00'],
+            ['kelas_id' => $kelas1->id, 'mapel_id' => $mapelMTK->id,  'guru_id' => $guru1->id, 'hari' => 'rabu',   'mulai' => '09:15:00', 'selesai' => '10:45:00'],
+            // Kamis
+            ['kelas_id' => $kelas1->id, 'mapel_id' => $mapelBJW->id,  'guru_id' => $guru1->id, 'hari' => 'kamis',  'mulai' => '09:15:00', 'selesai' => '10:45:00'],
+            // Jumat
+            ['kelas_id' => $kelas1->id, 'mapel_id' => $mapelIPAS->id, 'guru_id' => $guru1->id, 'hari' => 'jumat',  'mulai' => '07:30:00', 'selesai' => '09:00:00'],
+            ['kelas_id' => $kelas1->id, 'mapel_id' => $mapelKMD->id,  'guru_id' => $guru1->id, 'hari' => 'jumat',  'mulai' => '09:15:00', 'selesai' => '10:15:00'],
+            // Sabtu (Ekstrakurikuler Wajib Kepanduan HW & Penguatan Numerasi)
+            ['kelas_id' => $kelas1->id, 'mapel_id' => $mapelBIN->id,  'guru_id' => $guru1->id, 'hari' => 'sabtu',  'mulai' => '07:30:00', 'selesai' => '09:00:00'],
+            ['kelas_id' => $kelas1->id, 'mapel_id' => $mapelMTK->id,  'guru_id' => $guru1->id, 'hari' => 'sabtu',  'mulai' => '09:15:00', 'selesai' => '10:45:00'],
 
-        Jadwal::create([
-            'kelas_id'          => $kelas1->id,
-            'mata_pelajaran_id' => $mapelKMD->id,
-            'guru_id'           => $guru1->id,
-            'semester_id'       => $semGanjil->id,
-            'hari'              => 'senin',
-            'jam_mulai'         => '09:15:00',
-            'jam_selesai'       => '10:45:00',
-        ]);
+            // === GURU 2: Siti Walidah, S.Pd.I. (Wali Kelas 2) ===
+            // Senin
+            ['kelas_id' => $kelas2->id, 'mapel_id' => $mapelMTK->id,  'guru_id' => $guru2->id, 'hari' => 'senin',  'mulai' => '07:30:00', 'selesai' => '09:00:00'],
+            ['kelas_id' => $kelas2->id, 'mapel_id' => $mapelBIN->id,  'guru_id' => $guru2->id, 'hari' => 'senin',  'mulai' => '09:15:00', 'selesai' => '10:45:00'],
+            // Selasa
+            ['kelas_id' => $kelas2->id, 'mapel_id' => $mapelBIN->id,  'guru_id' => $guru2->id, 'hari' => 'selasa', 'mulai' => '07:30:00', 'selesai' => '09:00:00'],
+            ['kelas_id' => $kelas2->id, 'mapel_id' => $mapelKMD->id,  'guru_id' => $guru2->id, 'hari' => 'selasa', 'mulai' => '10:15:00', 'selesai' => '11:45:00'],
+            // Rabu
+            ['kelas_id' => $kelas2->id, 'mapel_id' => $mapelMTK->id,  'guru_id' => $guru2->id, 'hari' => 'rabu',   'mulai' => '07:30:00', 'selesai' => '09:00:00'],
+            ['kelas_id' => $kelas2->id, 'mapel_id' => $mapelBJW->id,  'guru_id' => $guru2->id, 'hari' => 'rabu',   'mulai' => '09:15:00', 'selesai' => '10:45:00'],
+            // Kamis
+            ['kelas_id' => $kelas2->id, 'mapel_id' => $mapelIPAS->id, 'guru_id' => $guru2->id, 'hari' => 'kamis',  'mulai' => '07:30:00', 'selesai' => '09:00:00'],
+            // Jumat
+            ['kelas_id' => $kelas2->id, 'mapel_id' => $mapelIPAS->id, 'guru_id' => $guru2->id, 'hari' => 'jumat',  'mulai' => '07:30:00', 'selesai' => '09:00:00'],
+            ['kelas_id' => $kelas2->id, 'mapel_id' => $mapelKMD->id,  'guru_id' => $guru2->id, 'hari' => 'jumat',  'mulai' => '09:15:00', 'selesai' => '10:15:00'],
+            // Sabtu
+            ['kelas_id' => $kelas2->id, 'mapel_id' => $mapelBIN->id,  'guru_id' => $guru2->id, 'hari' => 'sabtu',  'mulai' => '07:30:00', 'selesai' => '09:00:00'],
+            ['kelas_id' => $kelas2->id, 'mapel_id' => $mapelMTK->id,  'guru_id' => $guru2->id, 'hari' => 'sabtu',  'mulai' => '09:15:00', 'selesai' => '10:45:00'],
 
-        Jadwal::create([
-            'kelas_id'          => $kelas1->id,
-            'mata_pelajaran_id' => $mapelMTK->id,
-            'guru_id'           => $guru1->id,
-            'semester_id'       => $semGanjil->id,
-            'hari'              => 'selasa',
-            'jam_mulai'         => '07:30:00',
-            'jam_selesai'       => '09:00:00',
-        ]);
+            // === GURU 3: H. Fachrodin, M.Pd.I. (Guru Mapel Agama PAI & B. Arab Lintas Kelas) ===
+            ['kelas_id' => $kelas1->id, 'mapel_id' => $mapelPAI->id,  'guru_id' => $guru3->id, 'hari' => 'senin',  'mulai' => '07:30:00', 'selesai' => '08:30:00'],
+            ['kelas_id' => $kelas2->id, 'mapel_id' => $mapelBAR->id,  'guru_id' => $guru3->id, 'hari' => 'selasa', 'mulai' => '09:15:00', 'selesai' => '10:15:00'],
+            ['kelas_id' => $kelas2->id, 'mapel_id' => $mapelPAI->id,  'guru_id' => $guru3->id, 'hari' => 'rabu',   'mulai' => '10:15:00', 'selesai' => '11:30:00'],
+            ['kelas_id' => $kelas1->id, 'mapel_id' => $mapelBAR->id,  'guru_id' => $guru3->id, 'hari' => 'kamis',  'mulai' => '07:30:00', 'selesai' => '09:00:00'],
+            ['kelas_id' => $kelas2->id, 'mapel_id' => $mapelPAI->id,  'guru_id' => $guru3->id, 'hari' => 'kamis',  'mulai' => '09:15:00', 'selesai' => '10:45:00'],
+        ];
 
-        Jadwal::create([
-            'kelas_id'          => $kelas1->id,
-            'mata_pelajaran_id' => $mapelBIN->id,
-            'guru_id'           => $guru1->id,
-            'semester_id'       => $semGanjil->id,
-            'hari'              => 'rabu',
-            'jam_mulai'         => '07:30:00',
-            'jam_selesai'       => '09:00:00',
-        ]);
-
-        Jadwal::create([
-            'kelas_id'          => $kelas1->id,
-            'mata_pelajaran_id' => $mapelBAR->id,
-            'guru_id'           => $guru3->id,
-            'semester_id'       => $semGanjil->id,
-            'hari'              => 'kamis',
-            'jam_mulai'         => '07:30:00',
-            'jam_selesai'       => '09:00:00',
-        ]);
-
-        Jadwal::create([
-            'kelas_id'          => $kelas1->id,
-            'mata_pelajaran_id' => $mapelIPAS->id,
-            'guru_id'           => $guru1->id,
-            'semester_id'       => $semGanjil->id,
-            'hari'              => 'jumat',
-            'jam_mulai'         => '07:30:00',
-            'jam_selesai'       => '09:00:00',
-        ]);
+        foreach ($jadwalList as $j) {
+            Jadwal::create([
+                'kelas_id'          => $j['kelas_id'],
+                'mata_pelajaran_id' => $j['mapel_id'],
+                'guru_id'           => $j['guru_id'],
+                'semester_id'       => $semGanjil->id,
+                'hari'              => $j['hari'],
+                'jam_mulai'         => $j['mulai'],
+                'jam_selesai'       => $j['selesai'],
+            ]);
+        }
 
         // 11. Presensi Contoh Hari Ini & Kemarin
         $tglHariIni = Carbon::today()->toDateString();

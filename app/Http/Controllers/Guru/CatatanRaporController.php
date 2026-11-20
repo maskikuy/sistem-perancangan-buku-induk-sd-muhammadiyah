@@ -20,6 +20,7 @@ class CatatanRaporController extends Controller
         $daftarKelas = Kelas::orderBy('tingkat')->get();
 
         $kelasId = $request->input('kelas_id', $kelasWali ? $kelasWali->id : $daftarKelas->first()?->id);
+        $taAktif = \App\Models\TahunAjaran::where('is_aktif', true)->first();
         $semAktif = Semester::where('is_aktif', true)->first();
 
         $daftarSiswa = Siswa::whereHas('riwayatKelas', function ($q) use ($kelasId) {
@@ -31,7 +32,7 @@ class CatatanRaporController extends Controller
                                             ->get()
                                             ->keyBy('siswa_id');
 
-        return view('guru.catatan.index', compact('daftarKelas', 'kelasId', 'daftarSiswa', 'catatanTersimpan', 'semAktif'));
+        return view('guru.catatan.index', compact('daftarKelas', 'kelasId', 'daftarSiswa', 'catatanTersimpan', 'taAktif', 'semAktif'));
     }
 
     public function store(Request $request)

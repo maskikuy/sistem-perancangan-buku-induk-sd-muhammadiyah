@@ -1,6 +1,38 @@
 <x-dynamic-component :component="'layouts.admin'">
     <x-slot name="header">Ringkasan Dashboard Sekolah</x-slot>
 
+    <!-- Banner Tahun Ajaran & Ringkasan Sekolah -->
+    <div style="background: linear-gradient(135deg, #065f46 0%, #047857 100%);" class="bg-emerald-800 rounded-2xl p-5 text-white shadow-md mb-6 relative overflow-hidden">
+        <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+                <div class="flex flex-wrap items-center gap-2 mb-2">
+                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-950/80 text-emerald-200 border border-emerald-600/50 flex items-center">
+                        <span class="w-2 h-2 mr-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        TA Aktif: {{ $taAktif?->nama ?? '2026/2027' }} (Semester {{ ucfirst($semAktif?->semester ?? 'Ganjil') }})
+                    </span>
+                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-teal-900/80 text-teal-200 border border-teal-600/50">
+                        SD Muhammadiyah Sleman
+                    </span>
+                </div>
+                <h2 class="text-xl font-bold leading-tight">Panel Administrasi Buku Induk Digital</h2>
+                <p class="text-xs text-emerald-100 mt-1">
+                    Sistem Informasi Terintegrasi untuk pengelolaan data master, buku induk siswa, presensi, jadwal, dan rapor sekolah.
+                </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 self-start md:self-auto">
+                <a href="{{ route('admin.siswa.index') }}" class="px-3.5 py-2 bg-white/15 hover:bg-white/25 backdrop-blur rounded-xl text-xs font-semibold border border-white/20 text-white transition flex items-center shadow-sm">
+                    <svg class="w-4 h-4 mr-1.5 text-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    Buku Induk
+                </a>
+                <a href="{{ route('admin.tahun-ajaran.index') }}" class="px-3.5 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl text-xs font-semibold shadow-sm transition flex items-center">
+                    <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    Kelola TA & Semester
+                </a>
+            </div>
+        </div>
+        <div class="absolute -right-8 -bottom-8 w-36 h-36 rounded-full bg-white/5 pointer-events-none"></div>
+    </div>
+
     <!-- Kartu Statistik Utama -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         <!-- Siswa Aktif -->

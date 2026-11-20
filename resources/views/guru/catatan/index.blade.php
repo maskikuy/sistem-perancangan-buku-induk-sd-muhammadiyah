@@ -15,7 +15,7 @@
         </form>
 
         <span class="text-xs text-gray-500">
-            Semester Aktif: <strong class="text-teal-700 font-bold capitalize">{{ $semAktif?->semester ?? 'Ganjil' }}</strong>
+            Tahun Ajaran: <strong class="text-teal-700 font-bold">{{ $taAktif?->nama ?? '2026/2027' }}</strong> &bull; Semester: <strong class="text-teal-700 font-bold capitalize">{{ $semAktif?->semester ?? 'Ganjil' }}</strong>
         </span>
     </div>
 

@@ -1,6 +1,15 @@
 <x-dynamic-component :component="'layouts.guru'">
     <x-slot name="header">Input Presensi Harian Siswa</x-slot>
 
+    <!-- Info Tahun Ajaran & Semester Aktif -->
+    <div class="bg-teal-50 border border-teal-200 text-teal-900 rounded-xl px-4 py-2.5 mb-4 flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-2">
+        <div class="flex items-center space-x-2">
+            <span class="w-2 h-2 rounded-full bg-teal-600 animate-pulse"></span>
+            <span>Tahun Ajaran Aktif: <strong class="font-bold text-teal-950">{{ $taAktif?->nama ?? '2026/2027' }}</strong> &bull; Semester: <strong class="font-bold text-teal-950 capitalize">{{ $semAktif?->semester ?? 'Ganjil' }}</strong></span>
+        </div>
+        <span class="text-[11px] text-teal-700 font-medium">SD Muhammadiyah Sleman</span>
+    </div>
+
     <!-- Toolbar Pemilih Kelas & Tanggal -->
     <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm mb-6">
         <form method="GET" action="{{ route('guru.presensi.index') }}" class="flex flex-col sm:flex-row items-center justify-between gap-3">

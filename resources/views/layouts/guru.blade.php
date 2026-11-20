@@ -122,7 +122,17 @@
                         <h2 class="text-base sm:text-lg font-bold text-gray-800">{{ $header ?? 'Panel Guru & Wali Kelas' }}</h2>
                     </div>
 
-                    <div class="flex items-center space-x-3">
+                    <div class="flex items-center space-x-2 sm:space-x-3">
+                        @php
+                            $taAktifNav = \App\Models\TahunAjaran::where('is_aktif', true)->first();
+                            $semAktifNav = \App\Models\Semester::where('is_aktif', true)->first();
+                        @endphp
+                        <!-- Indikator Tahun Ajaran Aktif -->
+                        <div class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-medium bg-teal-50 text-teal-800 border border-teal-200 shadow-sm">
+                            <span class="w-2 h-2 mr-1.5 rounded-full bg-teal-500 animate-pulse"></span>
+                            TA Aktif: {{ $taAktifNav?->nama ?? '2026/2027' }} ({{ ucfirst($semAktifNav?->semester ?? 'Ganjil') }})
+                        </div>
+
                         <x-realtime-clock variant="badge" />
                     </div>
                 </div>

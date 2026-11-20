@@ -19,13 +19,20 @@ class NilaiController extends Controller
      */
     public function index(Request $request)
     {
+        $user = Auth::user();
+        $guru = $user->guru;
+        $kelasWali = $guru ? $guru->kelasWali : null;
+        $mapelDiampuGuru = $guru ? \App\Models\Jadwal::where('guru_id', $guru->id)->pluck('mata_pelajaran_id')->unique() : collect();
+
         $daftarKelas = Kelas::orderBy('tingkat')->get();
         $daftarMapel = MataPelajaran::orderBy('nama_mapel')->get();
 
-        $kelasId = $request->input('kelas_id', $daftarKelas->first()?->id);
-        $mapelId = $request->input('mapel_id', $daftarMapel->first()?->id);
+        $kelasId = $request->input('kelas_id', $kelasWali ? $kelasWali->id : $daftarKelas->first()?->id);
+        $defaultMapel = $mapelDiampuGuru->isNotEmpty() ? $mapelDiampuGuru->first() : $daftarMapel->first()?->id;
+        $mapelId = $request->input('mapel_id', $defaultMapel);
         $jenisNilai = $request->input('jenis_nilai', 'pts'); // tugas, uh, pts, pas
 
+        $taAktif = \App\Models\TahunAjaran::where('is_aktif', true)->first();
         $semAktif = Semester::where('is_aktif', true)->first();
 
         // Ambil siswa di kelas ini
@@ -49,6 +56,7 @@ class NilaiController extends Controller
             'jenisNilai',
             'daftarSiswa',
             'nilaiTersimpan',
+            'taAktif',
             'semAktif'
         ));
     }
